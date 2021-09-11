@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+* {
+    color: whitesmoke;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    background-color: #22303C;
+}
+
+.site-name {
+    color: fuchsia;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-shadow: 2px 0px 0px rgba(94, 119, 87, 1);
+}
+
+.xg-counter {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    line-height: 1;
+}
+
+.xg-value-div {
+    margin-left: 10px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: xx-large;
+}
+
+
+.canvas-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.interactiveSVG {
+    border: 10px solid rgba(0,157,0,0.8);
+    // position: absolute;
+}
+
+.drag-obj{
+    position: relative;
+    border-radius: 50%;
+    background-color: yellowgreen;
+    top: 180px;
+    left: 200px;
+    width: 20px;
+    height: 20px;
+}
+
+.drag-obj {
+    &:hover {
+        cursor:move;
+      }  
+}
+
+.headed-shot {
+    margin-bottom: 20px;
+}
+
+.info {
+    background-color: #1e90ff;
+    border-radius: 2%;
+    padding: 5px;
+}
+
+.qa {
+    margin: 10px;
+}
+.question {
+    text-align: center;
+    font-weight: bolder;
+    font-size: xx-large;
+    margin-left: 10px;
+}
+
+.answer {
+    text-align: center;
+    margin-left: 10px;
+
+}
+
+
+#footer-text-img {
+    color: fuchsia;
+    text-align: center;
+    font-size: small;
+    margin: 0;
+}
+img#sb-logo {
+    width: 100px;
+    height: auto;
+    display: inline;
+}
+
+footer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
