@@ -27,7 +27,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   font-size: xx-large;
-  line-height: 1;
 }
 
 .xg-value-div {
@@ -41,6 +40,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0 auto;
+  width: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -74,31 +75,60 @@ body {
 }
 
 .info {
+  display: table;
+  margin: 0 auto;
+  width: 100%;
   background-color: #1e90ff;
   border-radius: 2%;
-  padding: 5px;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .qa {
-  margin: 10px;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .question {
   text-align: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   font-weight: bolder;
   font-size: xx-large;
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .answer {
   text-align: center;
-  margin-left: 10px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.answer img {
+  border: 5px solid black;
+}
+
+.answer a {
+  text-decoration: none;
+  font-weight: bolder;
+  color: brown;
+}
+
+ul.feature-list {
+  display: table;
+  margin: 0 auto;
+  text-align: left;
 }
 
 #footer-text-img {
   color: fuchsia;
   text-align: center;
-  font-size: small;
+  font-size: 12px;
   margin: 0;
 }
 
@@ -111,5 +141,15 @@ img#sb-logo {
 footer {
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+footer p {
+  line-height: 12px;
+}
+
+footer a {
+  text-decoration: none;
+  color: brown;
+  font-weight: bolder;
 }
 /*# sourceMappingURL=stylesheet.css.map */

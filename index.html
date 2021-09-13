@@ -10,6 +10,17 @@
     </script>
     <script defer type="text/javascript" src="https://cdn.jsdelivr.net/gh/petercollingridge/InteractiveSVG.js@db2890b4ae093f85cd1149b94d5be11bae6092a4/interactiveSVG.js">
     </script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-206586714-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-206586714-2');
+    </script>
+
     <script defer src="./public/scripts/main.js"></script>
 
     <link rel="stylesheet" href="./public/styles/stylesheet.css">
@@ -35,14 +46,34 @@
         <div class="info">
             <div class="qa">
                 <p class="question">What is this site?</p>
-                <p class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, dolore!</p>
+                <p class="answer">This site is meant as a demo to go 
+                    along with this blog post <a href="https://www.opengoalapp.com/xg-with-cnns-full-study">"xG with CNNs"</a>. 
+                    The Expected Goals (xG) model developed there is a CNN-based model trained on Statsbomb's freeze frames dataset. The features it takes into account are:
+                    <ul class="feature-list">
+                        <li>shot location</li>
+                        <li>location of the goalkeeper</li>
+                        <li>location of the defenders</li>
+                    </ul> 
+                </p>
                 <p class="question">Tell me more about the model!</p>
-                <p class="answer">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, dolore!</p>
+                <p class="answer">To learn more about the model, it is strongly suggested you read the full write-up linked above. The important part is the model 
+                    architecture and the inputs.
+                    <br>
+                    For each shot scenario, the model takes into account three things - the location of the ball, the location of defenders,
+                    and the location of the goalkeeper, and merges them to form a single input.
+                    <br>
+                    <img src="./public/images/model-input.webp" alt="Model Inputs">
+                    <br>
+                    The model itself has 3x(Convolution + Max-pooling) layers, followed by a single dense layer to flatten out the outputs from
+                    the convolution layer. Finally, we predict a single value which is the the probability of the shot resulting in a goal (AKA, the xG value).
+                    <br>
+                    <img src="./public/images/final_arch.webp" alt="Model architecture">
+                </p>
             </div>
         </div>
     </div>
     <footer>
-        <p id="footer-text-img">Made by Charles William & Abhishek Sharma | Powered by <img id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo"></p> 
+        <p id="footer-text-img">Made by <a href="https://twitter.com/opengoalcharles">Charles William</a>  & <a href="https://twitter.com/abhisheksh_98">Abhishek Sharma</a> | Powered by <img align="middle" id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo"></p> 
     </footer>
 </body>
 </html>

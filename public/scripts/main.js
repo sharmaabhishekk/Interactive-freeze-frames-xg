@@ -18,36 +18,60 @@ var arc = svg.addElement("path", {d:"M 350 180 C 350 240, 450 240, 450 180", sty
 //add players and ball
 
 draggableObjsAttributes = [
-    {"x":400, "y":100, class:"drag-obj active player", r:12,style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":460, "y":145, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":450, "y":150, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":470, "y":143, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":480, "y":136, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":490, "y":130, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":350, "y":160, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":450, "y":160, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":250, "y":160, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":380, "y":160, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1"}, 
-    {"x":400, "y":10, class:"drag-obj active player goalkeeper", r:12, style:"fill:dodgerblue;stroke:white;stroke-width:1"}, 
-    {"x":500, "y":200, class:"drag-obj active ball", r:7, style:"fill:black;stroke:white;stroke-width:1"}, 
+    {"x":350, "y":108, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":433, "y":93, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":461, "y":150, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":490, "y":235, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":519, "y":144, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":515, "y":87, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":312, "y":165, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":391, "y":154, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":285, "y":107, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":350, "y":270, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":400, "y":20, class:"drag-obj active player goalkeeper", r:12, style:"fill:dodgerblue;stroke:white;stroke-width:1", title:"player"}, 
+    {"x":495, "y":172, class:"drag-obj active ball", r:7, style:"fill:black;stroke:white;stroke-width:1", title:"player"}, 
 ]
 
 draggableObjsAttributes.forEach(dragObjAttr => {
-    svg.addPoint({x: dragObjAttr["x"], y: dragObjAttr["y"], class:dragObjAttr["class"], r: dragObjAttr["r"], style:dragObjAttr["style"]});
+    var point = svg.addPoint({x: dragObjAttr["x"], y: dragObjAttr["y"], class:dragObjAttr["class"], r: dragObjAttr["r"], style:dragObjAttr["style"]});
 })
 
 draggableObjs = document.querySelectorAll("circle.drag-obj")
 
 draggableObjs.forEach( el => {
+    if (el.classList.contains("player")) {
+        if (el.classList.contains("goalkeeper")) {
+            var title = "Goalkeeper"
+        } else {
+            var title = "Opposition Player"
+        }
+
+    } else {
+        var title = "Shot Location"
+    }
+    el.innerHTML = "<title>"+title+"</title>";
     el.addEventListener("mousedown", dragStart);
     el.addEventListener("mouseup",  dragEnd);
+    el.addEventListener("touchstart", touchStart);
+    el.addEventListener("touchend",  touchEnd);
 })
 
-function dragStart(){
+function dragStart(e){
      console.log("drag start")
 }
  
-function dragEnd(){
+function dragEnd(e){
     console.log("drag end")
     document.querySelector("h3#xg-value").textContent = Math.random().toFixed(2);
+}
+
+function touchStart(e) {
+    e.preventDefault();
+    console.log("touch start")
+    console.log(e.pageX, e.pageY)
+}
+
+function touchEnd(e) {
+    console.log("touch end")
+    // console.log(e)
 }

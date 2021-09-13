@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 * {
     color: whitesmoke;
 }
@@ -22,7 +23,6 @@ body {
     display: flex;
     justify-content: center;
     font-size: xx-large;
-    line-height: 1;
 }
 
 .xg-value-div {
@@ -35,6 +35,8 @@ body {
 
 .canvas-holder {
     display: flex;
+    margin: 0 auto;
+    width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
@@ -66,32 +68,54 @@ body {
 }
 
 .info {
+    display: table;
+    margin: 0 auto;
+    width:100%;
     background-color: #1e90ff;
     border-radius: 2%;
-    padding: 5px;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .qa {
-    margin: 10px;
+    margin: 0 auto;
+    width: 80%;
 }
 .question {
     text-align: center;
+    justify-content: start;
     font-weight: bolder;
     font-size: xx-large;
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .answer {
     text-align: center;
-    margin-left: 10px;
+    justify-content: start;
+    margin-left: 20px;
+    margin-right: 20px;
 
+    img {
+        border: 5px solid black;
+    }
+    a {
+        text-decoration: none;
+        font-weight: bolder;
+        color: brown;
+    }
 }
 
+ul.feature-list{
+    display: table; 
+    margin: 0 auto;
+    text-align: left;
+}
 
 #footer-text-img {
     color: fuchsia;
     text-align: center;
-    font-size: small;
+    font-size: 12px;
     margin: 0;
 }
 img#sb-logo {
@@ -103,4 +127,28 @@ img#sb-logo {
 footer {
     margin-top: 10px;
     margin-bottom: 20px;
+
+    p {
+        line-height: 12px;
+    }
+
+    a {
+        text-decoration: none;
+        color: brown;
+        font-weight: bolder;
+    }
 }
+
+
+// @media (max-width:360px) {
+//     .site-name {
+//         font-size: x-large;
+//     }
+
+//     .interactiveSVG {
+//         width: 360;
+//         height: 180;
+//     }
+// }
+// 
+
