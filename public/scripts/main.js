@@ -75,3 +75,17 @@ function touchEnd(e) {
     console.log("touch end")
     // console.log(e)
 }
+
+async function loadModel() {
+    model = undefined;
+    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model.json")
+    console.log("model loaded");
+    return model
+}
+
+model = loadModel();
+
+// function makePrediction() {
+//     var a, b, output;
+//     a = 
+// }
