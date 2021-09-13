@@ -11,8 +11,8 @@ This site is meant as a demo to go along with this blog post [xG with CNNs]("htt
 To learn more about the model, it is strongly suggested you read the full write-up linked above. The important part is the model architecture and the inputs.
 For each shot scenario, the model takes into account three things - the location of the ball, the location of defenders, and the location of the goalkeeper, and merges them to form a single input.
 
-![Model Inputs]("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/public/images/model-input.png")
+![Model Inputs](https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/public/images/model-input.png)
 
 The model itself has 3 [Convolution + Max-pooling] layers, followed by a single dense layer to flatten out the outputs from the convolution layer. Finally, we predict a single value which is the the probability of the shot resulting in a goal (AKA, the xG value).
 
-![Model Architecture]("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/public/images/final_arch.png")
+![Model Architecture](https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/public/images/final_arch.png)
