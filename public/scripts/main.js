@@ -1,6 +1,7 @@
 // xg value
-
-var xg_val = document.querySelector("h3#xg-value").textContent
+var xg_val_elm = document.querySelector("h3#xg-value")
+//odometer
+od = new Odometer({el: xg_val_elm, value: 0.79, format: '(d).dd', theme: 'car', duration:500});
 // plotting our pitch and adding ball and player points using interactivesvg.js utilities
 
 var svg = InteractiveSVG.create('svg', 800, 400);
@@ -50,8 +51,8 @@ draggableObjs.forEach( el => {
         var title = "Shot Location"
     }
     el.innerHTML = "<title>"+title+"</title>";
-    el.addEventListener("mousedown", dragStart);
-    el.addEventListener("mouseup",  dragEnd);
+    el.addEventListener("pointerdown", dragStart);
+    el.addEventListener("pointerup",  dragEnd);
     el.addEventListener("touchstart", touchStart);
     el.addEventListener("touchend",  touchEnd);
 })
@@ -62,30 +63,27 @@ function dragStart(e){
  
 function dragEnd(e){
     console.log("drag end")
-    document.querySelector("h3#xg-value").textContent = Math.random().toFixed(2);
+    od.update(Math.random().toFixed(2)) 
 }
 
 function touchStart(e) {
     e.preventDefault();
-    console.log("touch start")
-    console.log(e.pageX, e.pageY)
 }
 
 function touchEnd(e) {
-    console.log("touch end")
-    // console.log(e)
+    od.update(Math.random().toFixed(2))     
 }
 
-async function loadModel() {
-    model = undefined;
-    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model.json")
-    console.log("model loaded");
-    return model
-}
-
-model = loadModel();
-
-// function makePrediction() {
-//     var a, b, output;
-//     a = 
+// async function loadModel() {
+//     model = undefined;
+//     model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
+//     console.log("model loaded");
+//     return model
 // }
+
+// model = loadModel();
+
+// // function makePrediction() {
+// //     var a, b, output;
+// //     a = 
+// // }

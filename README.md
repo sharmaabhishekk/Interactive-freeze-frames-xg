@@ -1,4 +1,4 @@
-# Freeze Frames xG Interactive App
+# xG Board
 
 This site is meant as a demo to go along with this blog post [xG with CNNs]("https://www.opengoalapp.com/xg-with-cnns-full-study"). The Expected Goals (xG) model developed there is a CNN-based model trained on Statsbomb's freeze frames dataset. The features it takes into account are:
 
