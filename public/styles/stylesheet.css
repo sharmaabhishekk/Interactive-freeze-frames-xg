@@ -120,6 +120,8 @@ body {
 
 .answer img {
   border: 5px solid black;
+  height: 70%;
+  width: 70%;
 }
 
 .answer a {
@@ -160,5 +162,26 @@ footer a {
   text-decoration: none;
   color: brown;
   font-weight: bolder;
+}
+
+@media (max-width: 600px) {
+  .site-name {
+    font-size: x-large;
+  }
+  .h3#xg-value {
+    font-size: large;
+  }
+  .question {
+    font-size: large;
+  }
+  .answer {
+    font-size: x-small;
+  }
+  ul.feature-list {
+    font-size: x-small;
+  }
+  .interactiveSVG {
+    border: 5px solid rgba(0, 157, 0, 0.8);
+  }
 }
 /*# sourceMappingURL=stylesheet.css.map */

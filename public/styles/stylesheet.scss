@@ -50,7 +50,6 @@ body {
 
 .interactiveSVG {
     border: 10px solid rgba(0,157,0,0.8);
-    // position: absolute;
 }
 
 .drag-obj{
@@ -104,6 +103,8 @@ body {
 
     img {
         border: 5px solid black;
+        height: 70%;
+        width: 70%;
     }
     a {
         text-decoration: none;
@@ -146,15 +147,32 @@ footer {
 }
 
 
-// @media (max-width:360px) {
-//     .site-name {
-//         font-size: x-large;
-//     }
+@media (max-width:600px) {
+    .site-name {
+        font-size: x-large;
+    }
 
-//     .interactiveSVG {
-//         width: 360;
-//         height: 180;
-//     }
-// }
-// 
+    .h3#xg-value {
+        font-size: large;
+    }
+
+    .question {
+        font-size: large;
+    }
+
+    .answer {
+        font-size: x-small;
+    }
+
+    ul.feature-list {
+        font-size: x-small;
+    }
+
+    .interactiveSVG {
+        border: 5px solid rgba(0,157,0,0.8);
+    }
+
+
+}
+
 
