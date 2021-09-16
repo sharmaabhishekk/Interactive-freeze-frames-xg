@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <title>xG Board</title>
     <!-- interactiveSVG stuff -->
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
@@ -34,6 +40,9 @@
 
 </head>
 <body>
+    <div id="menu" class="absolute hidden">
+        Deselect
+    </div>
     <div class="nav-bar">
         <h1 class="site-name">xG Board</h1>
     </div>
@@ -54,8 +63,8 @@
         <div class="info">
             <div class="qa">
                 <p class="question">What is this site?</p>
-                <p class="answer">xG Board is meant as an interactive demo for the CNN-based xG model (<a href="https://www.opengoalapp.com/xg-with-cnns-full-study">"xG with CNNs"</a>) by Charles William. 
-                    In this demo site, you can move the goalkeeper, the defenders, and the shot location around to get the predicted xG values for those scenarios.
+                <p class="answer"> <b>xG Board</b> is meant as an interactive demo for a CNN-based xG model (<a href="https://www.opengoalapp.com/xg-with-cnns-full-study">"xG with CNNs"</a>) developed by Charles William. 
+                    Using the graphic attached above, you can move the goalkeeper, the defenders, and the shot location around to get the model predicted xG values for those scenarios.
                 </p>
                 <p class="question">Tell me more about the model!</p>
 
@@ -71,8 +80,8 @@
                     <img src="./public/images/model-input.webp" alt="Model Inputs">
                     <br>
                     <br>
-                    The model itself is a Convolutional Neural Network trained on the Statsbomb freeze frames dataset. It has 3 [Convolution + Max-pooling] layers, followed by a fully connected layer to predict the probability of the shot 
-                    resulting in a goal (AKA, the xG value).
+                    The model itself is a <b>Convolutional Neural Network</b> trained on the <b>Statsbomb freeze frames dataset</b>. It has 3 <b>[Convolution + Max-pooling]</b> layers, followed by a fully connected layer to predict the probability of the shot 
+                    resulting in a goal (AKA, the <b>xG value</b>).
                     <br>
                     <br>
                     <img src="./public/images/final_arch.webp" alt="Model architecture">

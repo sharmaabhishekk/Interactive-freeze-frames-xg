@@ -168,9 +168,6 @@ footer a {
   .site-name {
     font-size: x-large;
   }
-  .h3#xg-value {
-    font-size: large;
-  }
   .question {
     font-size: large;
   }
@@ -183,5 +180,25 @@ footer a {
   .interactiveSVG {
     border: 5px solid rgba(0, 157, 0, 0.8);
   }
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.hidden {
+  /* The menu is hidden at first */
+  display: none;
+}
+
+div#menu {
+  list-style-type: none;
+  border: 1px solid black;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
 /*# sourceMappingURL=stylesheet.css.map */

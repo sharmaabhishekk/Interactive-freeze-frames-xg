@@ -1,115 +1,180 @@
 // xg value
 var xg_val_elm = document.querySelector("h3#xg-value")
+var menu = document.querySelector("div#menu")
 //odometer
-od = new Odometer({el: xg_val_elm, value: 0.79, format: '(d).dd', theme: 'car', duration:500});
+od = new Odometer({el: xg_val_elm, value: 0.07, format: '(d).dd', theme: 'car', duration:500});
 // plotting our pitch and adding ball and player points using interactivesvg.js utilities
 
 function drawPitch(){
 
-    draggableObjsAttributes = [
-        {"x":350, "y":108, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":433, "y":93, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":461, "y":150, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":490, "y":235, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":519, "y":144, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":515, "y":87, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":312, "y":165, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":391, "y":154, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":285, "y":107, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":350, "y":270, class:"drag-obj active player", r:12, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":400, "y":20, class:"drag-obj active player goalkeeper", r:12, style:"fill:dodgerblue;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":495, "y":172, class:"drag-obj active ball", r:7, style:"fill:black;stroke:white;stroke-width:1", title:"player"}, 
-    ]
-
-    if (screen.width >= 800) {
-        var svg = InteractiveSVG.create('svg', 800, 400);
-
-        var outline = svg.addElement('rect', {x:0, y:0, width:800, height:400, style:"fill:rgba(0,157,0, 0.8);stroke-width:2;stroke:white"});
-        var pen_box = svg.addElement('rect', {x:180, y:0, width:440, height:180, style:"fill:transparent;stroke-width:2;stroke:white"});
-        var six_yard_box = svg.addElement('rect', {x:300, y:0, width:200, height:60, style:"fill:transparent;stroke-width:2;stroke:white"});
-        var goal = svg.addElement('rect', {x:360, y:0, width:80, height:4, style:"stroke-width:1;stroke:white;fill:white"});
-
-        var corner_right = svg.addPoint({x: 800, y: 0, r: 10, static: true, style:"stroke:white;stroke-width:2;fill:transparent"});
-        var corner_left = svg.addPoint({x: 0, y: 0, r: 10, static:true, style:"stroke:white;stroke-width:2;fill:transparent"});
-        var pen_spot = svg.addPoint({x: 400, y: 120, r: 2, static: true, style:"stroke:white;stroke-width:2;fill:white"});
-        var arc = svg.addElement("path", {d:"M 350 180 C 350 240, 450 240, 450 180", style:"stroke:white;fill:transparent;stroke-width:2"})
-
-        //add players and ball
-        draggableObjsAttributes.forEach(dragObjAttr => {
-            var point = svg.addPoint({x: dragObjAttr["x"], y: dragObjAttr["y"], class:dragObjAttr["class"], r: dragObjAttr["r"], style:dragObjAttr["style"]});
-    })
-
-    } else {
-        var width = 300;
-        var height = 150;
-        var svg = InteractiveSVG.create('svg', width, height);
-
-        var outline = svg.addElement('rect', {x:0, y:0, width:width, height:height, style:"fill:rgba(0,157,0, 0.8);stroke-width:2;stroke:white"});
-        var pen_box = svg.addElement('rect', {x:67.5, y:0, width:165, height:67.5, style:"fill:transparent;stroke-width:2;stroke:white"});
-        var six_yard_box = svg.addElement('rect', {x:112.5, y:0, width:75, height:22.5, style:"fill:transparent;stroke-width:2;stroke:white"});
-        var goal = svg.addElement('rect', {x:135, y:0, width:30, height:2, style:"stroke-width:1;stroke:white;fill:white"});
-
-        var corner_right = svg.addPoint({x: width, y: 0, r: 10, static: true, style:"stroke:white;stroke-width:2;fill:transparent"});
-        var corner_left = svg.addPoint({x: 0, y: 0, r: 10, static:true, style:"stroke:white;stroke-width:2;fill:transparent"});
-        var pen_spot = svg.addPoint({x: height, y: 120, r: 2, static: true, style:"stroke:white;stroke-width:2;fill:white"});
-        var arc = svg.addElement("path", {d:"M 131.25 67.5 C 131.25 90, 168.75 90, 168.75 67.5", style:"stroke:white;fill:transparent;stroke-width:2"})
-
-        //add players and ball
-        draggableObjsAttributes.forEach(dragObjAttr => {
-            var point = svg.addPoint({x: (dragObjAttr["x"]/800)*width, y: (dragObjAttr["y"]/400)*height, class:dragObjAttr["class"], r: dragObjAttr["r"]/3, style:dragObjAttr["style"]});
-    })
-
+    while (document.querySelector("svg.interactiveSVG")) {
+        document.querySelector("svg.interactiveSVG").remove();
     }
+
+
+    if (screen.width>=800) {
+        var width = 800;
+        var height = width/2;
+        var ball_radius = 7;
+        var player_radius = 12;
+    } else {
+        var width = parseInt(screen.width/100)*100 - 20;
+        var height = width/2;
+        var ball_radius = width/100;
+        var player_radius = ball_radius*1.2;
+    }
+
+    draggableObjsAttributes = [
+        {"x":350, "y":108, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":433, "y":93, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":461, "y":150, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":490, "y":235, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":519, "y":144, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":515, "y":87, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":312, "y":165, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":391, "y":154, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":285, "y":107, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":350, "y":270, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":400, "y":20, class:"drag-obj active player goalkeeper", r:player_radius, style:"fill:dodgerblue;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":495, "y":172, class:"drag-obj active ball", r:ball_radius, style:"fill:black;stroke:white;stroke-width:1", title:"player"}, 
+    ] //initial coordinates of all objects based on a 800x400 pitch
+
+    var svg = InteractiveSVG.create('svg', width, height);
+
+    var outline = svg.addElement('rect', {x:0, y:0, width:width, height:height, style:"fill:rgba(0,157,0, 0.8);stroke-width:2;stroke:white"});
+    var pen_box = svg.addElement('rect', {x:0.225*width, y:0, width:0.55*width, height:0.45*height, style:"fill:transparent;stroke-width:2;stroke:white"});
+    var six_yard_box = svg.addElement('rect', {x:0.375*width, y:0, width:0.25*width, height:0.15*height, style:"fill:transparent;stroke-width:2;stroke:white"});
+    var goal = svg.addElement('rect', {x:0.45*width, y:0, width:0.1*width, height:0.01*height, style:"stroke-width:1;stroke:white;fill:white"});
+
+    var corner_right = svg.addPoint({x: width, y: 0, r: 10, static: true, style:"stroke:white;stroke-width:2;fill:transparent"});
+    var corner_left = svg.addPoint({x: 0, y: 0, r: 10, static:true, style:"stroke:white;stroke-width:2;fill:transparent"});
+    var pen_spot = svg.addPoint({x: 0.5*width, y: 0.3*height, r: 2, static: true, style:"stroke:white;stroke-width:2;fill:white"});
+    var arc = svg.addElement("path", {d:`M ${0.4375*width} ${0.45*height} C ${0.4375*width} ${0.6*height}, ${0.5625*width} ${0.6*height}, ${0.5625*width} ${0.45*height}`,
+                                      style:"stroke:white;fill:transparent;stroke-width:2"})
+
+        //add players and ball
+    draggableObjsAttributes.forEach(dragObjAttr => {
+        var point = svg.addPoint({x: (dragObjAttr["x"]/800)*width, y: (dragObjAttr["y"]/400)*height, class:dragObjAttr["class"], r: dragObjAttr["r"], style:dragObjAttr["style"]});
+})
     draggableObjs = document.querySelectorAll("circle.drag-obj")
+    draggableObjs.forEach( el => {
+        if (el.classList.contains("player")) {
+            if (el.classList.contains("goalkeeper")) {
+                var title = "Goalkeeper"
+            } else {
+                var title = "Opposition Player"
+            }
+    
+        } else {
+            var title = "Shot Location"
+        }
+        el.innerHTML = "<title>"+title+"</title>";
+        el.addEventListener("pointerdown", dragStart);
+        el.addEventListener("pointerup",  dragEnd);
+        el.addEventListener("touchstart", dragStart);
+        el.addEventListener("touchend",  dragEnd);
+        el.addEventListener("contextmenu", e => {
+            e.preventDefault();
+            menu.style.top = `${e.clientY+50}px`;
+            menu.style.left = `${e.clientX}px`;
+        
+            // Show the menu
+            menu.classList.remove('hidden');
+            document.addEventListener('click', documentClickHandler);
+        })
+    })
     return draggableObjs
 }
 draggableObjs = drawPitch()
 
-draggableObjs.forEach( el => {
-    if (el.classList.contains("player")) {
-        if (el.classList.contains("goalkeeper")) {
-            var title = "Goalkeeper"
-        } else {
-            var title = "Opposition Player"
-        }
-
-    } else {
-        var title = "Shot Location"
-    }
-    el.innerHTML = "<title>"+title+"</title>";
-    el.addEventListener("pointerdown", dragStart);
-    el.addEventListener("pointerup",  dragEnd);
-    el.addEventListener("touchstart", touchStart);
-    el.addEventListener("touchend",  touchEnd);
-})
-
 function dragStart(e){
-     console.log("drag start")
+    console.log("dragging...")
 }
  
 function dragEnd(e){
-    console.log("drag end")
-    od.update(Math.random().toFixed(2)) 
+    var predictedXg =  getCurrentPred()
+    od.update(predictedXg.toFixed(2)) 
 }
 
-function touchStart(e) {
-    e.preventDefault();
+window.addEventListener("resize", () => {
+    draggableObjs = drawPitch()
+
+})
+
+function getInputTensor() {
+    var svg = document.querySelector("svg.interactiveSVG");
+    var width = svg.getAttribute("width");
+    var height = svg.getAttribute("height");
+
+    var ball = document.querySelector("circle.drag-obj.ball");
+    var gk = document.querySelector(".drag-obj.goalkeeper");
+    var defenders = document.querySelectorAll("circle.drag-obj.player:not(.goalkeeper)");
+
+    // ball
+    ballX = ball.getAttribute("cx");
+    ballY = ball.getAttribute("cy");
+
+    ballArray = Array(40).fill().map(() => Array(80).fill(0));
+    bxIdx = parseInt((parseFloat(ballX)/parseFloat(width))*80);
+    byIdx = parseInt((parseFloat(ballY)/parseFloat(height))*40); 
+
+    ballArray[byIdx][bxIdx] = 1;
+
+    // goal keeper
+    gkX = gk.getAttribute("cx");
+    gkY = gk.getAttribute("cy");
+
+    gkArray = Array(40).fill().map(() => Array(80).fill(0));
+    gkxIdx = parseInt((parseFloat(gkX)/parseFloat(width))*80);
+    gkyIdx = parseInt((parseFloat(gkY)/parseFloat(height))*40); 
+
+    gkArray[gkyIdx][gkxIdx] = 1;
+
+    //defenders 
+    defendersArray = Array(40).fill().map(() => Array(80).fill(0));
+    defenders.forEach(defender => {
+        dfX = defender.getAttribute("cx");
+        dfY = defender.getAttribute("cy");
+    
+        dfxIdx = parseInt((parseFloat(dfX)/parseFloat(width))*80);
+        dfyIdx = parseInt((parseFloat(dfY)/parseFloat(height))*40); 
+        defendersArray[dfyIdx][dfxIdx] = 1;
+    })
+
+    const shotTensor = tf.tensor2d(ballArray, [40, 80])
+    const gkTensor = tf.tensor2d(gkArray, [40, 80])
+    const dfTensor = tf.tensor2d(defendersArray, [40, 80])
+
+    return tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3])
 }
 
-function touchEnd(e) {
-    od.update(Math.random().toFixed(2))     
+const documentClickHandler = function(e) {
+    const isClickedOutside = !menu.contains(e.target);
+    if (isClickedOutside) {
+        // Hide the menu
+        menu.classList.add('hidden');
+
+        // Remove the event handler
+        document.removeEventListener('click', documentClickHandler);
+    }
+};
+
+
+async function loadModel() {
+    model = undefined;
+    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
+    return model
 }
 
+function getCurrentPred() {
+    var inputTensor = getInputTensor()
+    result = model.predict(inputTensor)
+    return result.dataSync()[0]
+}
+
+model = loadModel();
 
 
-// async function loadModel() {
-//     model = undefined;
-//     model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
-//     console.log("model loaded");
-//     return model
-// }
-
-// model = loadModel();
 
 // // function makePrediction() {
 // //     var a, b, output;
