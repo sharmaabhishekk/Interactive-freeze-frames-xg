@@ -7,8 +7,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins';
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#344350), color-stop(98%, #12222f));
-  background-image: linear-gradient(0deg, #344350 0%, #12222f 98%);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#344350), color-stop(70%, #12222f));
+  background-image: linear-gradient(0deg, #344350 0%, #12222f 70%);
 }
 
 .nav-bar {
@@ -17,6 +17,7 @@ body {
   background-image: linear-gradient(90deg, #0f0101 29%, #110404 66%);
   -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2%;
 }
 
 .site-name {
@@ -25,10 +26,30 @@ body {
   font-size: xx-large;
   margin-top: 0px;
   margin-left: 30px;
-  text-shadow: 2px 0px 0px #5e7757;
+  text-shadow: 0px 0px 4px dodgerblue;
+}
+
+.helper-div {
+  margin: auto;
+  width: 50%;
+}
+
+.helper-div p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: small;
+}
+
+.helper-text:hover {
+  color: white;
 }
 
 .xg-counter {
+  font-family: 'Poppins';
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,6 +57,17 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   font-size: xx-large;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.xg-counter h3 {
+  text-shadow: 0px 0px 4px rgba(245, 245, 245, 0.4);
+  margin-bottom: 0px;
+  font-family: 'Poppins';
+  font-size: xx-large;
+  font-weight: bolder;
 }
 
 .xg-value-div {
@@ -63,6 +95,8 @@ body {
 
 .interactiveSVG {
   border: 10px solid rgba(0, 157, 0, 0.8);
+  -webkit-box-shadow: 0 0 3px rgba(245, 245, 245, 0.5);
+          box-shadow: 0 0 3px rgba(245, 245, 245, 0.5);
 }
 
 .drag-obj {
@@ -87,10 +121,19 @@ body {
   display: table;
   margin: 0 auto;
   width: 100%;
-  background-color: #1e90ff;
+  background-color: rgba(30, 144, 255, 0.6);
   border-radius: 2%;
-  padding-top: 1em;
+  padding-top: 8px;
   padding-bottom: 1em;
+  -webkit-box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.3);
+          box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.3);
+}
+
+.separator {
+  width: 80%;
+  height: 1px;
+  background-color: whitesmoke;
+  margin: 0 auto;
 }
 
 .qa {
@@ -107,6 +150,9 @@ body {
   font-size: xx-large;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-shadow: 0px 0px 4px rgba(245, 245, 245, 0.4);
 }
 
 .answer {
@@ -139,7 +185,7 @@ ul.feature-list {
 #footer-text-img {
   color: fuchsia;
   text-align: center;
-  font-size: 12px;
+  font-size: 15px;
   margin: 0;
 }
 
@@ -150,7 +196,7 @@ img#sb-logo {
 }
 
 footer {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -160,7 +206,7 @@ footer p {
 
 footer a {
   text-decoration: none;
-  color: brown;
+  color: orangered;
   font-weight: bolder;
 }
 

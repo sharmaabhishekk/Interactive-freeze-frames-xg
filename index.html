@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='shortcut icon' type='image/x-icon' href="https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/favicon.ico" />
 
-    <title>xG Board</title>
+    <title>xG Board | Interactive xG Playground </title>
     <!-- interactiveSVG stuff -->
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
     </script>
@@ -31,14 +31,14 @@
     <script defer src="./public/scripts/main.js"></script>
 
     <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
-    <link rel="stylesheet" href="./public/styles/stylesheet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/petercollingridge/InteractiveSVG.js@db2890b4ae093f85cd1149b94d5be11bae6092a4/interactiveSVG.css">
+    <link rel="stylesheet" href="./public/styles/stylesheet.css">
 
 </head>
 <body>
-    <div id="menu" class="absolute hidden">
+    <!-- <div id="menu" class="absolute hidden">
         Deselect
-    </div>
+    </div> -->
     <div class="nav-bar">
         <h1 class="site-name">xG Board</h1>
     </div>
@@ -47,6 +47,9 @@
             <div class="xg-counter">
                 <h3>Live xG</h3>
                 <div class="xg-value-div"><h3 id="xg-value" class="odometer">0.78</h3></div>
+            </div>
+            <div class="helper-div">
+                <p class="helper-text">(Move the dots around to see the xG live update!)</p>
             </div>
             <div class="canvas-holder">
                 <div id="svg"></div>
@@ -62,6 +65,7 @@
                 <p class="answer"> <b>xG Board</b> is meant as an interactive demo for a CNN-based xG model (<a href="https://www.opengoalapp.com/xg-with-cnns-full-study">"xG with CNNs"</a>) developed by Charles William. 
                     Using the pitch dashboard above, you can play around with the goalkeeper, the defenders, and the shot location to get the model predicted xG values for those scenarios.
                 </p>
+                <div class="separator"></div>
                 <p class="question">Tell me more about the model!</p>
 
                 <p class="answer">
@@ -82,6 +86,8 @@
                     <br>
                     <img src="./public/images/final_arch.webp" alt="Model architecture">
                 </p>
+                <div class="separator"></div>
+
 
             </div>
         </div>

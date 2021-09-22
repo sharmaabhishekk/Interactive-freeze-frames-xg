@@ -73,15 +73,6 @@ function drawPitch(){
         el.addEventListener("pointerup",  dragEnd);
         el.addEventListener("touchstart", dragStart);
         el.addEventListener("touchend",  dragEnd);
-        el.addEventListener("contextmenu", e => {
-            e.preventDefault();
-            menu.style.top = `${e.clientY+50}px`;
-            menu.style.left = `${e.clientX}px`;
-        
-            // Show the menu
-            menu.classList.remove('hidden');
-            document.addEventListener('click', documentClickHandler);
-        })
     })
     return draggableObjs
 }
@@ -92,8 +83,8 @@ function dragStart(e){
 }
  
 function dragEnd(e){
-    var predictedXg =  getCurrentPred()
-    od.update(predictedXg.toFixed(2)) 
+    // var predictedXg = getCurrentPred();
+    od.update(Math.random().toFixed(2))     
 }
 
 window.addEventListener("resize", () => {
@@ -148,17 +139,6 @@ function getInputTensor() {
     return tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3])
 }
 
-const documentClickHandler = function(e) {
-    const isClickedOutside = !menu.contains(e.target);
-    if (isClickedOutside) {
-        // Hide the menu
-        menu.classList.add('hidden');
-
-        // Remove the event handler
-        document.removeEventListener('click', documentClickHandler);
-    }
-};
-
 
 async function loadModel() {
     model = undefined;
@@ -172,11 +152,10 @@ function getCurrentPred() {
     return result.dataSync()[0]
 }
 
-model = loadModel();
+model = loadModel()
+// async function dummyPrediction() {
+//     model = await loadModel();
+//     await model.predict(tf.zeros([1, 40, 80, 3]))
+// }
 
-
-
-// // function makePrediction() {
-// //     var a, b, output;
-// //     a = 
-// // }
+// dummyPrediction()
