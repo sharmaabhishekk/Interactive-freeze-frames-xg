@@ -1,7 +1,6 @@
 // xg value
 tf.setBackend("cpu");
 var xg_val_elm = document.querySelector("h3#xg-value")
-var menu = document.querySelector("div#menu")
 //odometer
 od = new Odometer({el: xg_val_elm, value: 0.07, format: '(d).dd', theme: 'car', duration:400});
 // plotting our pitch and adding ball and player points using interactivesvg.js utilities
@@ -149,14 +148,27 @@ function getInputTensor() {
     const gkTensor = tf.tensor2d(gkArray, [40, 80])
     const dfTensor = tf.tensor2d(defendersArray, [40, 80])
 
-    return tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3])
+    // get our auxiallary input
+    var ballX = parseInt(document.querySelector("circle.drag-obj.ball").getAttribute("cx"))
+    var ballY = parseInt(document.querySelector("circle.drag-obj.ball").getAttribute("cy"))
+
+    xDist = (Math.abs(width/2 - ballX)/(width))*80;
+    yDist = (ballY/height)*40;
+
+    var ballTheta = Math.atan2(yDist, xDist);
+    var ballDistance = (yDist**2 + xDist**2)**0.5;
+
+    const auxInput = tf.tensor2d([ballDistance, ballTheta], [1,2], "float32")
+
+    return [tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3]), auxInput]
 }
 
 
 async function loadModel() {
     model = undefined;
     // model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-large.json")
-    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-240k.json")
+    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-mixture-trained.json")
+    // model = await tf.loadLayersModel("../../models/model-mixture-trained.json")
     return model
 }
 
