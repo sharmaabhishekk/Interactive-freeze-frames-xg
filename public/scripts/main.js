@@ -1,8 +1,9 @@
 // xg value
+tf.setBackend("cpu");
 var xg_val_elm = document.querySelector("h3#xg-value")
 var menu = document.querySelector("div#menu")
 //odometer
-od = new Odometer({el: xg_val_elm, value: 0.07, format: '(d).dd', theme: 'car', duration:500});
+od = new Odometer({el: xg_val_elm, value: 0.07, format: '(d).dd', theme: 'car', duration:400});
 // plotting our pitch and adding ball and player points using interactivesvg.js utilities
 
 function drawPitch(){
@@ -83,8 +84,20 @@ function dragStart(e){
 }
  
 function dragEnd(e){
-    // var predictedXg = getCurrentPred();
-    od.update(Math.random().toFixed(2))     
+    var predictedXg = getCurrentPred();
+    var currentXgValue = parseFloat(document.querySelector("div.odometer-inside").innerText.replace(/\n/g, ''));
+    arrowElm = document.querySelector("span.arrow")
+    if (currentXgValue > predictedXg) {
+        // console.log("decreasing")
+        arrowElm.classList.remove("arrow-top");
+        arrowElm.classList.add("arrow-bottom");
+    } else {
+        // console.log("increasing")
+        arrowElm.classList.remove("arrow-bottom");
+        arrowElm.classList.add("arrow-top");        
+    }
+    // console.log(predictedXg);
+    od.update(predictedXg.toFixed(2))     
 }
 
 window.addEventListener("resize", () => {
@@ -142,7 +155,8 @@ function getInputTensor() {
 
 async function loadModel() {
     model = undefined;
-    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
+    // model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
+    model = await tf.loadLayersModel("../../model/model-minified-240k.json")
     return model
 }
 
@@ -153,9 +167,4 @@ function getCurrentPred() {
 }
 
 model = loadModel()
-// async function dummyPrediction() {
-//     model = await loadModel();
-//     await model.predict(tf.zeros([1, 40, 80, 3]))
-// }
 
-// dummyPrediction()
