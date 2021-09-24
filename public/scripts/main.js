@@ -155,8 +155,8 @@ function getInputTensor() {
 
 async function loadModel() {
     model = undefined;
-    // model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/model/model-2.json")
-    model = await tf.loadLayersModel("../../model/model-minified-240k.json")
+    // model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-large.json")
+    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-240k.json")
     return model
 }
 
