@@ -44,6 +44,13 @@ body {
   font-size: small;
 }
 
+.helper-text {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 5px auto;
+}
+
 .helper-text:hover {
   color: white;
 }
@@ -141,13 +148,15 @@ body {
 .info {
   display: table;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
+  padding: 0;
   background-color: rgba(30, 144, 255, 0.6);
   border-radius: 2%;
   padding-top: 8px;
   padding-bottom: 1em;
   -webkit-box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.3);
           box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.3);
+  margin-top: 20px;
 }
 
 .separator {
@@ -195,6 +204,10 @@ body {
   text-decoration: none;
   font-weight: bolder;
   color: brown;
+}
+
+img.blockdiagram {
+  background-color: white;
 }
 
 ul.feature-list {

@@ -148,7 +148,9 @@ function getInputTensor() {
     const gkTensor = tf.tensor2d(gkArray, [40, 80])
     const dfTensor = tf.tensor2d(defendersArray, [40, 80])
 
-    // get our auxiallary input
+    // get our auxillary input
+
+    //ball
     var ballX = parseInt(document.querySelector("circle.drag-obj.ball").getAttribute("cx"))
     var ballY = parseInt(document.querySelector("circle.drag-obj.ball").getAttribute("cy"))
 
@@ -158,17 +160,25 @@ function getInputTensor() {
     var ballTheta = Math.atan2(yDist, xDist);
     var ballDistance = (yDist**2 + xDist**2)**0.5;
 
-    const auxInput = tf.tensor2d([ballDistance, ballTheta], [1,2], "float32")
+    //goalkeeper
+
+    var gkX = parseInt(document.querySelector("circle.drag-obj.goalkeeper").getAttribute("cx"))
+    var gkY = parseInt(document.querySelector("circle.drag-obj.goalkeeper").getAttribute("cy"))
+
+    xDist = (Math.abs(width/2 - gkX)/(width))*80;
+    yDist = (gkY/height)*40;
+
+    var gkTheta = Math.atan2(yDist, xDist);
+    var gkDistance = (yDist**2 + xDist**2)**0.5;
+
+    const auxInput = tf.tensor2d([ballDistance, ballTheta, gkDistance, gkTheta], [1,4], "float32")
 
     return [tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3]), auxInput]
 }
 
 
 async function loadModel() {
-    model = undefined;
-    // model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-large.json")
-    model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-mixture-trained.json")
-    // model = await tf.loadLayersModel("../../models/model-mixture-trained.json")
+    model = await tf.loadLayersModel("../../models/model-gk/model.json")
     return model
 }
 
@@ -179,4 +189,20 @@ function getCurrentPred() {
 }
 
 model = loadModel()
+
+/* 
+add new model with gk and get gk input
+remove header
+
+add legend
+separate model info from the canvas
+link contrast and expectency
+svg
+margin around info cards
+updated info from Charles
+notebooks
+
+mobile challenge
+wasm backend?
+*/
 
