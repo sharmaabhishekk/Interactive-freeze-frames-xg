@@ -29,7 +29,6 @@
     <script src="https://github.hubspot.com/odometer/odometer.js"></script>
     <!-- our main javascript -->
     <script defer src="./public/scripts/main.js"></script>
-
     <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/petercollingridge/InteractiveSVG.js@db2890b4ae093f85cd1149b94d5be11bae6092a4/interactiveSVG.css">
     <link rel="stylesheet" href="./public/styles/stylesheet.css">
@@ -52,47 +51,64 @@
             </div>
             <div class="canvas-holder">
                 <div id="svg"></div>
-                <!-- <div class="headed-shot">
-                    <input type="checkbox" label="header-checkbox" id="header-checkbox">
-                    <label for="header-checkbox"> Headed Shot</label>
-                </div> -->
+                <div class="legend">
+                    <svg height="110" width="400">
+                        <text x="200" y="15" text-anchor="middle" fill="white" font-size="16px" font-family="Poppins">Key</text>
+
+                        <circle cx="100" cy="40" r="10" stroke="white" stroke-width="0.5" fill="orangered" />
+                        <text x="100" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Defender</text>
+
+                        <circle cx="200" cy="40" r="10" stroke="white" stroke-width="0.5" fill="dodgerblue" />
+                        <text x="200" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Goalkeeper</text>
+
+                        <circle cx="300" cy="40" r="10" stroke="white" stroke-width="0.5" fill="black" />
+                        <text x="300" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Shot Location</text>
+                    </svg>
+                </div>
             </div>
         </div> 
         <div class="info">
             <div class="qa">
                 <p class="question">What is this site?</p>
-                <p class="answer"> <b>xG Board</b> is meant as an interactive demo for a CNN-based xG model (<a href="https://www.opengoalapp.com/xg-with-cnns-full-study">"xG with CNNs"</a>) developed by Charles William. 
+                <p class="answer"> <b>xG Board</b> is a fully interactive, opposition-aware expected goals(xG) simulator. Use the tactics board to move the ball, defenders and goalkeeper, and the xG of the scenario will update in real time. 
                     Using the pitch dashboard above, you can play around with the goalkeeper, the defenders, and the shot location to get the model predicted xG values for those scenarios.
                 </p>
                 <div class="separator"></div>
-                <p class="question">Tell me more about the model!</p>
 
+                <p class="question">How does the xG model work?</p>
                 <p class="answer">
-                    A full write-up about the model (and the code!) can be found in the link above(&#9757). The most important parts are the model architecture and the inputs. The features it takes into account are:
-                </p>
-                <ul class="feature-list">
-                        <li>shot location</li>
-                        <li>location of the goalkeeper</li>
-                        <li>location of the defenders</li>
-                </ul> 
-                <p class="answer">
-                    <img src="./public/images/model-input.webp" alt="Model Inputs">
-                    <br>
-                    <br>
-                    The model itself is a <b>Convolutional Neural Network</b> trained on the <b>Statsbomb freeze frames dataset</b>. It has 3 <b>[Convolution + Max-pooling]</b> layers, followed by a fully connected layer to predict the probability of the shot 
-                    resulting in a goal (AKA, the <b>xG value</b>).
-                    <br>
-                    <br>
-                    <img class="blockdiagram" src="./public/images/blockdiagram.svg" alt="Model architecture">
+                    Most xG models don&#39;t consider opposition defender and goalkeeper location when considering xG. Even the more advanced models typically only consider things like the density of defenders between the ball and the goal, and whether or not the goalkeeper is out of position. This model uses a machine learning technique called Convolutional Neural Networks (CNNs) to attempt to understand the spatial relationships between the exact location of the ball, defenders, and the goalkeeper and how it relates to xG.
+                    The architecture of the model is shown below, and you can read a more thorough description of the motivation and application of CNNs to xG modelling <a href="https://www.opengoalapp.com/xg-with-cnns-full-study">here</a>.
+                <img class="blockdiagram" src="./public/images/blockdiagram.svg" alt="model architecture">
                 </p>
                 <div class="separator"></div>
 
+                <p class="question">How accurate is the model?</p>
+                <p class="answer">Model accuracy compares favourably to leading xG models e.g. from StatsBomb over thousands of test shots. See the link above for the accuracy metrics that models of this type are capable of. That said, like all xG models, predicted xG will differ significantly from time to time from what you might expect or compared to other xG models. In addition, this model does not consider important input variables such as whether the shot was taken first time, shot height, or whether the shooter is shooting on the turn etc. So if you&#39;re looking to recreate a scenario from match footage, please bear this in mind!</p>
+                <div class="separator"></div>
+
+                <p class="question">Why does the xG change when I move players behind the ball?</p>
+                <p class="answer">You might reasonably expect that when moving defenders that we know have no bearing on the probability of a shot resulting in a goal, the model xG should not change. With this model that might not always be the case. This behaviour stems from the fact that like many neural networks, the model doesn&#39;t actually understand the system being modelled. It doesn&#39;t know what football is or what a good chance looks like in the way a human does. It has simply learned how to create a good approximation of shooting chance quality on shots it hasn&#39;t seen before. This is a crucial difference that is important to remember with AI as a whole!</p>
+                <div class="separator"></div>
+
+                <p class="question">Why do I get a ridiculously high/low xG in unusual scenarios?</p>
+                <p class="answer">The model has tried to learn how valuable shooting chances are based only on a mid-sized set of real-life shots. So like many machine learning models it is good at predicting on unseen inputs from within the same distribution of the training set i.e. realistic, common shot scenarios.  But it is basically guessing when it comes to inputs that differ considerably from those seen when training i.e. unrealistic or less common shot scenarios. Achieving high quality model performance across all possible input scenarios is therefore a  huge challenge.</p>
+                <div class="separator"></div>
+
+                <p class="question">Do you have plans to improve the model?</p>
+                <p class="answer">Yes, there are plans to improve the flexibility of the model and web app to allow the user to specify additional inputs such as whether or not the shot is a header, direct free kick, and other characteristics.
+                    These additions plus general model accuracy improvements would be reliant however on more, well-rounded training data being available. Although this model is trained on the incredibly generous StatsBomb open data shot freeze frames, the training data is a mixture of men&#39;s and women&#39;s football which is not ideal. Not to mention a large chunk of shots are taken by one player - Lionel Messi!</p>
+                <div class="separator"></div>
+
+                <p class="question">Can I make a web app like this myself?</p>
+                <p class="answer">Yes! Visit the <a href="https://github.com/sharmaabhishekk/Interactive-freeze-frames-xg">site repository</a> here and clone it. All the HTML, CSS and Javascript for this site is there. Then take a look at this <a href="./notebooks/xG_playground_model.ipynb">notebook</a> to train your own CNN xG model and save it in a web-friendly format. All you then need to do is make the site look how you want and drop your own model in!</p>
+                <div class="separator"></div>
 
             </div>
         </div>
     </div>
     <footer>
-        <p id="footer-text-img">Made by <a href="https://twitter.com/opengoalcharles">Charles William</a>  & <a href="https://twitter.com/abhisheksh_98">Abhishek Sharma</a> <br><br> Powered by <img align="middle" id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo"></p> 
+        <p id="footer-text-img">Made by <a href="https://twitter.com/opengoalcharles">Charles William</a> & <a href="https://twitter.com/abhisheksh_98">Abhishek Sharma</a> <br><br> Powered by <img align="middle" id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo"></p> 
     </footer>
 </body>
 </html>

@@ -191,18 +191,24 @@ function getCurrentPred() {
 model = loadModel()
 
 /* 
+DONE
 add new model with gk and get gk input
 remove header
-
-add legend
-separate model info from the canvas
 link contrast and expectency
-svg
 margin around info cards
 updated info from Charles
 notebooks
 
+TODO
+add legend
+
+MAYBE?
+multi-page
+
+ISSUES
 mobile challenge
-wasm backend?
+
+
+
 */
 
