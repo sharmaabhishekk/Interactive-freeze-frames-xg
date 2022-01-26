@@ -137,6 +137,12 @@ body {
 .legend {
     margin: 0 auto;
     width: fit-content;
+    border: black;
+}
+
+.legend-svg {
+    border-style: double;
+    border-color: fuchsia;
 }
 
 .info {
@@ -226,6 +232,19 @@ footer {
         // text-decoration: none;
         font-weight: bolder;
         color: white;
+    }
+}
+
+.statsbomb-credit {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        padding-right: 10px;
     }
 }
 

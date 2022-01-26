@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='shortcut icon' type='image/x-icon' href="https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/favicon.ico" />
 
-    <title>xG Board | Interactive xG Playground </title>
+    <title>xG Playground | Interactive xG Board </title>
     <!-- interactiveSVG stuff -->
     <script defer type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
     </script>
@@ -37,7 +37,7 @@
 <body>
 
     <div class="nav-bar">
-        <h1 class="site-name">xG Board</h1>
+        <h1 class="site-name">xG Playground</h1>
     </div>
     <div class="hero">
         <div class="graphic">
@@ -52,17 +52,17 @@
             <div class="canvas-holder">
                 <div id="svg"></div>
                 <div class="legend">
-                    <svg height="110" width="400">
-                        <text x="200" y="15" text-anchor="middle" fill="white" font-size="16px" font-family="Poppins">Key</text>
+                    <svg class='legend-svg' height="100" width="400">
+                        <text x="200" y="30" text-anchor="middle" fill="white" font-size="20px" font-family="Poppins" font-style='bold'>Key</text>
 
-                        <circle cx="100" cy="40" r="10" stroke="white" stroke-width="0.5" fill="orangered" />
-                        <text x="100" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Defender</text>
+                        <circle cx="100" cy="60" r="10" stroke="white" stroke-width="0.5" fill="orangered" />
+                        <text x="100" y="80" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Defender</text>
 
-                        <circle cx="200" cy="40" r="10" stroke="white" stroke-width="0.5" fill="dodgerblue" />
-                        <text x="200" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Goalkeeper</text>
+                        <circle cx="200" cy="60" r="10" stroke="white" stroke-width="0.5" fill="dodgerblue" />
+                        <text x="200" y="80" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Goalkeeper</text>
 
-                        <circle cx="300" cy="40" r="10" stroke="white" stroke-width="0.5" fill="black" />
-                        <text x="300" y="60" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Shot Location</text>
+                        <circle cx="300" cy="60" r="10" stroke="white" stroke-width="0.5" fill="black" />
+                        <text x="300" y="80" text-anchor="middle" fill="white" font-size="10px" font-family="Poppins">Shot Location</text>
                     </svg>
                 </div>
             </div>
@@ -70,7 +70,7 @@
         <div class="info">
             <div class="qa">
                 <p class="question">What is this site?</p>
-                <p class="answer"> <b>xG Board</b> is a fully interactive, opposition-aware expected goals(xG) simulator. Use the tactics board to move the ball, defenders and goalkeeper, and the xG of the scenario will update in real time. 
+                <p class="answer"> <b>xG Playground</b> is a fully interactive, opposition-aware expected goals(xG) simulator. Use the tactics board to move the ball, defenders and goalkeeper, and the xG of the scenario will update in real time. 
                     Using the pitch dashboard above, you can play around with the goalkeeper, the defenders, and the shot location to get the model predicted xG values for those scenarios.
                 </p>
                 <div class="separator"></div>
@@ -108,7 +108,12 @@
         </div>
     </div>
     <footer>
-        <p id="footer-text-img">Made by <a href="https://twitter.com/opengoalcharles">Charles William</a> & <a href="https://twitter.com/abhisheksh_98">Abhishek Sharma</a> <br><br> Powered by <img align="middle" id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo"></p> 
+        <p id="footer-text-img">Made by <a href="https://twitter.com/opengoalcharles">Charles William</a> & <a href="https://twitter.com/abhisheksh_98">Abhishek Sharma</a></p> 
+        <br>
+        <div class="statsbomb-credit">
+            <span>Powered by</span>
+            <img align="middle" id="sb-logo" src="https://raw.githubusercontent.com/statsbomb/open-data/master/img/statsbomb-logo.jpg" alt="Statsbomb Logo">
+        </div>
     </footer>
 </body>
 </html>

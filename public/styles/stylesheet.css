@@ -155,6 +155,12 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border: black;
+}
+
+.legend-svg {
+  border-style: double;
+  border-color: fuchsia;
 }
 
 .info {
@@ -251,6 +257,30 @@ footer p {
 footer a {
   font-weight: bolder;
   color: white;
+}
+
+.statsbomb-credit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.statsbomb-credit span {
+  padding-right: 10px;
 }
 
 @media (max-width: 600px) {
