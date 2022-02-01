@@ -190,25 +190,3 @@ function getCurrentPred() {
 
 model = loadModel()
 
-/* 
-DONE
-add new model with gk and get gk input
-remove header
-link contrast and expectency
-margin around info cards
-updated info from Charles
-notebooks
-
-TODO
-add legend
-
-MAYBE?
-multi-page
-
-ISSUES
-mobile challenge
-
-
-
-*/
-
