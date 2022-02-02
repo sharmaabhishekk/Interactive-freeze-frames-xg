@@ -5,6 +5,17 @@
 
 * a {
   color: purple;
+  font-weight: bolder;
+}
+
+* li {
+  margin: 0;
+  padding: 0 0 10px 40px;
+  list-style: none;
+  background-image: url("../images/soccer_ball.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 25px;
 }
 
 body {
@@ -126,20 +137,25 @@ body {
       align-content: center;
 }
 
+div#svg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .interactiveSVG {
-  border: 10px solid rgba(0, 157, 0, 0.8);
-  -webkit-box-shadow: 0 0 3px rgba(245, 245, 245, 0.5);
-          box-shadow: 0 0 3px rgba(245, 245, 245, 0.5);
+  border: 10px solid #dde7cb;
+  -webkit-box-shadow: 0 0 3px #dde7cb;
+          box-shadow: 0 0 3px #dde7cb;
 }
 
 .drag-obj {
   position: relative;
   border-radius: 50%;
-  background-color: yellowgreen;
-  top: 180px;
-  left: 200px;
-  width: 20px;
-  height: 20px;
+  fill: aqua;
 }
 
 .drag-obj:hover {
@@ -151,16 +167,67 @@ body {
 }
 
 .legend {
-  margin: 0 auto;
+  padding-top: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px auto;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border: black;
+  border: 2px solid white;
+  font-size: large;
+  font-weight: bolder;
+  -webkit-box-shadow: 0 0 2px white;
+          box-shadow: 0 0 2px white;
 }
 
-.legend-svg {
-  border-style: double;
-  border-color: fuchsia;
+.elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.entry {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: x-small;
+  font-weight: normal;
+}
+
+.key {
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid black;
+}
+
+.key.goalkeeper {
+  background-color: dodgerblue;
+}
+
+.key.shot-location {
+  background-color: black;
+}
+
+.key.defender {
+  background-color: orangered;
 }
 
 .info {
@@ -212,18 +279,20 @@ body {
   margin-right: 20px;
 }
 
-.answer img {
-  border: 5px solid black;
-  height: 70%;
-  width: 70%;
-}
-
-.answer a {
-  font-weight: bolder;
+.blockdiagram-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 img.blockdiagram {
   background-color: white;
+  border: 5px solid black;
+  height: 70%;
+  width: 70%;
 }
 
 ul.feature-list {
@@ -297,7 +366,7 @@ footer a {
     font-size: x-small;
   }
   .interactiveSVG {
-    border: 5px solid rgba(0, 157, 0, 0.8);
+    border: 10px solid #dde7cb;
   }
 }
 

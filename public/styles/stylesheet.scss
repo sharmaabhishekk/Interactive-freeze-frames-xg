@@ -4,6 +4,17 @@
     color: white;
     a {
         color: purple;
+        font-weight: bolder;
+    }
+
+    li {
+        margin: 0;
+        padding: 0 0 10px 40px;
+        list-style: none;
+        background-image: url("../images/soccer_ball.svg");
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 25px;
     }
 }
 body {
@@ -30,9 +41,6 @@ body {
     text-shadow: 0px 0px 4px dodgerblue;
 }
 
-// .hero {
-//     margin-top: 20px;
-// }
 
 .helper-div {
     margin: auto;
@@ -109,22 +117,21 @@ body {
     align-content: center;
 }
 
-.interactiveSVG {
-    border: 10px solid rgba(0,157,0,0.8);
-    box-shadow: 0 0 3px rgba(245, 245, 245, 0.5);
+div#svg {
+    display: flex;
+    justify-content: center;
 }
 
-.drag-obj{
-    position: relative;
-    border-radius: 50%;
-    background-color: yellowgreen;
-    top: 180px;
-    left: 200px;
-    width: 20px;
-    height: 20px;
+.interactiveSVG {
+    border: 10px solid #dde7cb;
+    box-shadow: 0 0 3px #dde7cb;
 }
 
 .drag-obj {
+    position: relative;
+    border-radius: 50%;
+    fill: aqua;
+
     &:hover {
         cursor:move;
       }  
@@ -135,14 +142,47 @@ body {
 }
 
 .legend {
-    margin: 0 auto;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px auto;
     width: fit-content;
-    border: black;
+    border: 2px solid white;
+    font-size: large;
+    font-weight: bolder;
+    box-shadow: 0 0 2px white;
 }
 
-.legend-svg {
-    border-style: double;
-    border-color: fuchsia;
+.elements {
+    display: flex;
+}
+
+.entry {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-small;
+    font-weight: normal;
+}
+
+.key {
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid black;
+}
+.key.goalkeeper {
+    background-color: dodgerblue;
+}
+
+.key.shot-location {
+    background-color: black;
+}
+
+.key.defender {
+    background-color: orangered;
 }
 
 .info {
@@ -186,20 +226,19 @@ body {
     justify-content: start;
     margin-left: 20px;
     margin-right: 20px;
+}
 
-    img {
-        border: 5px solid black;
-        height: 70%;
-        width: 70%;
-    }
-    a {
-        // text-decoration: none;
-        font-weight: bolder;
-    }
+.blockdiagram-div {
+    display: flex;
+    justify-content: center;
+
 }
 
 img.blockdiagram {
     background-color: white;
+    border: 5px solid black;
+    height: 70%;
+    width: 70%;
 }
 
 ul.feature-list{
@@ -267,7 +306,8 @@ footer {
     }
 
     .interactiveSVG {
-        border: 5px solid rgba(0,157,0,0.8);
+        border: 10px solid #dde7cb;
+
     }
 
 }

@@ -5,6 +5,14 @@ var xg_val_elm = document.querySelector("h3#xg-value")
 od = new Odometer({el: xg_val_elm, value: 0.07, format: '(d).dd', theme: 'car', duration:400});
 // plotting our pitch and adding ball and player points using interactivesvg.js utilities
 
+pitchColor = 'rgba(0,157,0, 0.8)'
+pitchLineColor = 'white'
+
+pitchColor = '#dde7cb' 
+pitchLineColor = '#452d32'
+circleBorderColor = '#452d32'
+
+// helper function to draw a half-pitch using the interactiveSVG helper tools (allows us to have easily draggable players and ball)
 function drawPitch(){
 
     while (document.querySelector("svg.interactiveSVG")) {
@@ -25,32 +33,32 @@ function drawPitch(){
     }
 
     draggableObjsAttributes = [
-        {"x":350, "y":108, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":433, "y":93, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":461, "y":150, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":490, "y":235, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":519, "y":144, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":515, "y":87, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":312, "y":165, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":391, "y":154, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":285, "y":107, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":350, "y":270, class:"drag-obj active player", r:player_radius, style:"fill:orangered;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":400, "y":20, class:"drag-obj active player goalkeeper", r:player_radius, style:"fill:dodgerblue;stroke:white;stroke-width:1", title:"player"}, 
-        {"x":495, "y":172, class:"drag-obj active ball", r:ball_radius, style:"fill:black;stroke:white;stroke-width:1", title:"player"}, 
+        {"x":350, "y":108, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":433, "y":93, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":461, "y":150, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":490, "y":235, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":519, "y":144, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":515, "y":87, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":312, "y":165, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":391, "y":154, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":285, "y":107, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":350, "y":270, class:"drag-obj active player", r:player_radius, style:`fill:orangered;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":400, "y":20, class:"drag-obj active player goalkeeper", r:player_radius, style:`fill:dodgerblue;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
+        {"x":495, "y":172, class:"drag-obj active ball", r:ball_radius, style:`fill:black;stroke:${circleBorderColor};stroke-width:1`, title:"player"}, 
     ] //initial coordinates of all objects based on a 800x400 pitch
 
     var svg = InteractiveSVG.create('svg', width, height);
 
-    var outline = svg.addElement('rect', {x:0, y:0, width:width, height:height, style:"fill:rgba(0,157,0, 0.8);stroke-width:2;stroke:white"});
-    var pen_box = svg.addElement('rect', {x:0.225*width, y:0, width:0.55*width, height:0.45*height, style:"fill:transparent;stroke-width:2;stroke:white"});
-    var six_yard_box = svg.addElement('rect', {x:0.375*width, y:0, width:0.25*width, height:0.15*height, style:"fill:transparent;stroke-width:2;stroke:white"});
-    var goal = svg.addElement('rect', {x:0.45*width, y:0, width:0.1*width, height:0.01*height, style:"stroke-width:1;stroke:white;fill:white"});
+    var outline = svg.addElement('rect', {x:0, y:0, width:width, height:height, style:`fill:${pitchColor};stroke-width:2;stroke:${pitchLineColor};box-shadow: 0 0 3px black`});
+    var pen_box = svg.addElement('rect', {x:0.225*width, y:0, width:0.55*width, height:0.45*height, style:`fill:transparent;stroke-width:2;stroke:${pitchLineColor};box-shadow: 0 0 3px black`});
+    var six_yard_box = svg.addElement('rect', {x:0.375*width, y:0, width:0.25*width, height:0.15*height, style:`fill:transparent;stroke-width:2;stroke:${pitchLineColor};box-shadow: 0 0 3px black`});
+    var goal = svg.addElement('rect', {x:0.45*width, y:0, width:0.1*width, height:0.01*height, style:`stroke-width:1;stroke:${pitchLineColor};fill:${pitchLineColor};box-shadow: 0 0 3px black`});
 
-    var corner_right = svg.addPoint({x: width, y: 0, r: 10, static: true, style:"stroke:white;stroke-width:2;fill:transparent"});
-    var corner_left = svg.addPoint({x: 0, y: 0, r: 10, static:true, style:"stroke:white;stroke-width:2;fill:transparent"});
-    var pen_spot = svg.addPoint({x: 0.5*width, y: 0.3*height, r: 2, static: true, style:"stroke:white;stroke-width:2;fill:white"});
+    var corner_right = svg.addPoint({x: width, y: 0, r: 10, static: true, style:`stroke:${pitchLineColor};stroke-width:2;fill:transparent;box-shadow: 0 0 3px black`});
+    var corner_left = svg.addPoint({x: 0, y: 0, r: 10, static:true, style:`stroke:${pitchLineColor};stroke-width:2;fill:transparent;box-shadow: 0 0 3px black`});
+    var pen_spot = svg.addPoint({x: 0.5*width, y: 0.3*height, r: 2, static: true, style:`stroke:${pitchLineColor};stroke-width:2;fill:${pitchLineColor};box-shadow: 0 0 3px black`});
     var arc = svg.addElement("path", {d:`M ${0.4375*width} ${0.45*height} C ${0.4375*width} ${0.6*height}, ${0.5625*width} ${0.6*height}, ${0.5625*width} ${0.45*height}`,
-                                      style:"stroke:white;fill:transparent;stroke-width:2"})
+                                      style:`stroke:${pitchLineColor};fill:transparent;stroke-width:2;box-shadow: 0 0 3px black`})
 
         //add players and ball
     draggableObjsAttributes.forEach(dragObjAttr => {
@@ -78,6 +86,7 @@ function drawPitch(){
 }
 draggableObjs = drawPitch()
 
+// for debugging purposes only
 function dragStart(e){
     console.log("dragging...")
 }
@@ -104,6 +113,10 @@ window.addEventListener("resize", () => {
 
 })
 
+/* 
+main function which takes in a scenario and then creates the input tensors for our model and then returns the model 
+predicted output to the frontend
+*/
 function getInputTensor() {
     var svg = document.querySelector("svg.interactiveSVG");
     var width = svg.getAttribute("width");
@@ -176,7 +189,7 @@ function getInputTensor() {
     return [tf.stack([shotTensor.reverse(), gkTensor.reverse(), dfTensor.reverse()], axis=2).reshape([1, 40, 80, 3]), auxInput]
 }
 
-
+// load in our tensorflow model
 async function loadModel() {
     model = await tf.loadLayersModel("https://raw.githubusercontent.com/sharmaabhishekk/Interactive-freeze-frames-xg/main/models/model-gk/model.json")
     return model
@@ -189,4 +202,3 @@ function getCurrentPred() {
 }
 
 model = loadModel()
-
