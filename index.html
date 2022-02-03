@@ -75,7 +75,7 @@
                 <p class="question">What is this site?</p>
                 <p class="answer"> 
                     <ul>
-                        <li><strong>xG Playground</strong> is a <strong>fully interactive, opposition-aware xG simulator</strong>. </li>
+                        <li><strong>xG Playground</strong> is a <strong>fully interactive, opposition-aware <a href="https://en.wikipedia.org/wiki/Expected_goals">expected Goals</a> simulator</strong>. </li>
                         <li>Use the tactics board above to move the <strong>ball</strong>, <strong>defenders</strong> and <strong>goalkeeper</strong>, and the xG of the scenario will update in real time.</li>
                     </ul>
                 </p>
@@ -98,10 +98,8 @@
                 <p class="question">How accurate is the model?</p>
                 <p class="answer">
                     <ul>
-                        <li><p>Model accuracy compares favourably to leading xG models e.g. from StatsBomb over thousands of test shots. Check out the <a href="https://www.opengoalapp.com/xg-with-cnns-full-study">blog</a> for a more detailed <strong>evaluation report</strong> of the model.</p>
-                        </li>
-                        <li><p>However, non-intuitive results for individual shot situations are common. In addition, this model does not consider important input variables such as whether the shot was taken <strong>first time</strong>, <strong>shot height</strong>, and <strong>shooter orientation and pose</strong> (e.g., whether the shooter is shooting on the turn). Something to bear in mind if you&#39;re looking to recreate a specific scenario from match footage!</p>
-                        </li>
+                        <li>Model accuracy compares favourably to leading xG models e.g. from StatsBomb over thousands of test shots. Check out the <a href="https://www.opengoalapp.com/xg-with-cnns-full-study">blog</a> for a more detailed <strong>evaluation report</strong> of the model.</li>
+                        <li>However, non-intuitive results for individual shot situations are common. In addition, this model does not consider important input variables such as whether the shot was taken <strong>first time</strong>, <strong>shot height</strong>, and <strong>shooter orientation and pose</strong> (e.g., whether the shooter is shooting on the turn). Something to bear in mind if you&#39;re looking to recreate a specific scenario from match footage!</li>
                     </ul>
                 </p>
                 <div class="separator"></div>
@@ -131,7 +129,7 @@
                     <ul>
                         <li>Yes, there are plans to improve the <strong>flexibility of the model</strong> and <strong>web app</strong> to allow the user to <strong>add/remove players</strong>, specify additional inputs such as whether or not the shot is a <strong>header</strong>, <strong>direct free kick</strong>, and other characteristics.</li>
                         <li>These additions plus general model accuracy improvements would be reliant however on more, <strong>well-rounded training data</strong> being available. </li>
-                        <li>Although this model is trained on the incredibly generous <strong>StatsBomb open data shot freeze frames</strong>, the training data is a mixture of both <strong>men&#39;s and women&#39;s football</strong>. Not to mention a large chunk of shots are taken by <strong>Lionel Messi</strong>! The first thing to try could be to add more training data from StatsBomb’s latest <a href="https://github.com/statsbomb/open-data">data release</a></li>
+                        <li>Although this model is trained on the incredibly generous <strong>StatsBomb open data shot freeze frames</strong>, the training data is a mixture of both <strong>men&#39;s and women&#39;s football</strong>. Not to mention a large chunk of shots are taken by <strong>Lionel Messi</strong>! The first thing to try could be to add more training data from StatsBomb’s latest <a href="https://github.com/statsbomb/open-data">data release</a>.</li>
                     </ul>
                 </p>
                 <div class="separator"></div>
@@ -139,8 +137,8 @@
                 <p class="question">Can I make a web app like this myself?</p>
                 <p class="answer">
                     <ul>
-                        <li>Yes! The code for both the model and the web app is publicly available. Visit the <a href="https://github.com/sharmaabhishekk/Interactive-freeze-frames-xg">github repository</a> and clone it. You&#39;ll find all the HTML, CSS and Javascript for this site in there. </li>
-                        <li>Next, take a look at this <a href="./notebooks/xG_playground_model.ipynb">Jupyter notebook</a> to train your own CNN xG model and save it in a web-friendly format. All you then need to do is make the site look how you want, drop your own model in, and you&#39;re done!</li>
+                        <li>Yes! The code for both the model and this web app is publicly available. Visit the <a href="https://github.com/sharmaabhishekk/Interactive-freeze-frames-xg">github repository</a> and clone it. You&#39;ll find all the HTML, CSS and Javascript for this site in there. </li>
+                        <li>Next, take a look at this <a href="./notebooks/xG_playground_model_v1.ipynb">Jupyter notebook</a> to train your own CNN xG model and save it in a web-friendly format. All you then need to do is make the site look how you want, drop your own model in, and you&#39;re done!</li>
                     </ul>
                 </p>
                 <div class="separator"></div>

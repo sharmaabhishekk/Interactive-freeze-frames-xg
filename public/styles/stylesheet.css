@@ -15,7 +15,7 @@
   background-image: url("../images/soccer_ball.svg");
   background-repeat: no-repeat;
   background-position: left top;
-  background-size: 25px;
+  background-size: 20px;
 }
 
 body {
@@ -224,6 +224,7 @@ div#svg {
 
 .key.shot-location {
   background-color: black;
+  border: 1px solid white;
 }
 
 .key.defender {
