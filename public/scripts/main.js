@@ -1,3 +1,4 @@
+
 // xg value
 tf.setBackend("cpu");
 var xg_val_elm = document.querySelector("h3#xg-value")
@@ -123,8 +124,8 @@ function getInputTensor() {
     var height = svg.getAttribute("height");
 
     var ball = document.querySelector("circle.drag-obj.ball");
-    var gk = document.querySelector(".drag-obj.goalkeeper");
-    var defenders = document.querySelectorAll("circle.drag-obj.player:not(.goalkeeper)");
+    var gk = document.querySelector(".drag-obj.goalkeeper.active");
+    var defenders = document.querySelectorAll("circle.drag-obj.player.active:not(.goalkeeper)");
 
     // ball
     ballX = ball.getAttribute("cx");
